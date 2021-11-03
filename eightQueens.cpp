@@ -2,7 +2,7 @@
 using namespace std;
 
 
-const int FIELD = 8;
+const int FIELD = 12;
 int board[FIELD][FIELD];			//задаем матрицу поля
 
 bool tryQueen(int i);
@@ -17,7 +17,7 @@ int main()
 	for (int i = 0; i < FIELD; i++)		//заполняем поле нулями
 		for (int j = 0; j < FIELD; j++)
 			board[i][j] = 0;
-	tryQueen(0);
+	tryQueen(0);						//пробуем поставить ферзя
 	for (int i = 0; i < FIELD; i++) {
 		for (int j = 0; j < FIELD; j++)
 		{
@@ -39,7 +39,7 @@ bool tryQueen(int i)				//принимает аргументом текущий
 		if (board[i][j] == 0)		//если поле свободно
 		{
 			putQueen(i, j);			// ставим ферзя
-			if (i == 7)
+			if (i == FIELD-1)
 				result = true;      //дойдя до конца столбца, возвращаем  тру, выходим из цикла
 			else
 			{
@@ -71,7 +71,7 @@ void putQueen(int i, int j)
 
 }
 
-void deleteQueen(int i, int j)
+void deleteQueen(int i, int j)      // функция,обратная putQueen
 {
 	for (int k = 0; k < FIELD; k++)
 	{
